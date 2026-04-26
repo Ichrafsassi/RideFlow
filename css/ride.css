@@ -20,35 +20,45 @@ html, body, #main, #map {
 
 #request {
     position: relative;
-    background: #fcc1d4 none repeat scroll 0 0;
-    color: #000;
-    border-color: #000;
-    border-radius: 5px;
+    background: linear-gradient(120deg, #ffb020, #ffd066);
+    color: #1b1405;
+    border: none;
+    border-radius: 999px;
     text-align: center;
-    width: 135px;
+    padding: 0.62rem 1.2rem;
+    font-weight: 700;
+    box-shadow: 0 10px 25px rgba(255, 176, 32, 0.35);
 }
 
 #request:disabled {
-    color: #999;
-    border-color: #999;
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
 #accountLink {
-    background: inherit;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(181, 206, 255, 0.22);
+    color: #eaf1ff;
+    border-radius: 999px;
 }
 
 #updates {
     list-style: none;
-    margin-top: 5px;
+    margin-top: 1rem;
     padding: 0;
+    display: grid;
+    gap: 0.6rem;
 }
 
 #updates li {
-    margin: 3px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f7f7f7;
-    padding: 5px;
+    margin: 0;
+    border: 1px solid rgba(181, 206, 255, 0.15);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.04);
+    color: #d8e8ff;
+    padding: 0.75rem;
+    font-size: 0.9rem;
 }
 
 .authToken {

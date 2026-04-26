@@ -1,0 +1,181 @@
+:root {
+    --rf-bg: #0b1220;
+    --rf-surface: #121b2d;
+    --rf-surface-soft: #1b2740;
+    --rf-text: #eaf1ff;
+    --rf-muted: #b7c4e0;
+    --rf-accent: #ff9900;
+    --rf-accent-alt: #18bfff;
+    --rf-outline: rgba(255, 255, 255, 0.14);
+}
+
+body {
+    background: radial-gradient(circle at 10% -10%, #24365f, transparent 35%),
+        radial-gradient(circle at 90% 0%, #2b2050, transparent 45%),
+        var(--rf-bg);
+    color: var(--rf-text);
+}
+
+a {
+    color: var(--rf-accent);
+}
+
+.site-header {
+    padding-top: 1.5rem;
+}
+
+.site-logo {
+    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
+}
+
+.site-nav {
+    background: linear-gradient(140deg, rgba(7, 12, 24, 0.95), rgba(15, 28, 54, 0.94));
+    backdrop-filter: blur(8px);
+}
+
+.site-nav a {
+    color: #f6f8ff;
+}
+
+.site-nav a:hover {
+    color: var(--rf-accent);
+}
+
+.btn-menu span,
+.btn-menu span:after,
+.btn-menu span:before {
+    background: #fff;
+}
+
+.page-home .home-button {
+    background: linear-gradient(120deg, var(--rf-accent), #ffc34d);
+    color: #101010;
+    border: 0;
+    border-radius: 999px;
+    box-shadow: 0 10px 24px rgba(255, 153, 0, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.page-home .home-button:hover {
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 14px 28px rgba(255, 153, 0, 0.48);
+}
+
+.home-about,
+.home-sign-up,
+.board-directors,
+.site-footer {
+    background: linear-gradient(180deg, var(--rf-surface), #0f1729);
+}
+
+.home-story,
+.home-quote,
+.page-unicorns .site-header,
+.page-investors .top-section,
+.page-faq .site-header,
+.page-apply .site-header {
+    position: relative;
+}
+
+.home-story:before,
+.home-quote:before,
+.page-unicorns .site-header:before,
+.page-investors .top-section:before,
+.page-faq .site-header:before,
+.page-apply .site-header:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(6, 9, 18, 0.3), rgba(6, 9, 18, 0.8));
+}
+
+.home-story .row,
+.home-quote .row,
+.page-unicorns .site-header .row,
+.page-investors .top-section .row,
+.page-faq .site-header .row,
+.page-apply .site-header .row {
+    position: relative;
+    z-index: 1;
+}
+
+.home-about-block,
+.investors-list .investor,
+.board-directors .intro,
+.faq-list dl,
+.page-apply .content .row,
+.unicorns-list .unicorn {
+    border: 1px solid var(--rf-outline);
+    border-radius: 18px;
+    background: linear-gradient(165deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25);
+}
+
+.home-about-block {
+    padding: 1.25rem 1rem;
+}
+
+.faq-list {
+    background: linear-gradient(180deg, #0f182b, #0d1425);
+}
+
+.faq-list dl {
+    padding: 1.25rem;
+}
+
+.faq-list dt {
+    color: #fff;
+}
+
+.faq-list dd {
+    color: var(--rf-muted);
+}
+
+.page-apply .content .row {
+    padding: 1.25rem;
+}
+
+.footer-nav a,
+.footer-legal {
+    color: #d4def6;
+}
+
+.footer-nav a:hover {
+    color: var(--rf-accent);
+}
+
+/* ride.html overlay redesign */
+.info {
+    right: 16px;
+    top: 16px;
+    width: 340px;
+}
+
+.info .panel {
+    border: 1px solid var(--rf-outline);
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(160deg, rgba(14, 21, 37, 0.95), rgba(19, 33, 60, 0.92));
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.35);
+}
+
+.info .panel-heading {
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#request {
+    background: linear-gradient(120deg, var(--rf-accent), #ffba42);
+    color: #1a1304;
+    border: 0;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+#updates li {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #eef3ff;
+    padding: 8px;
+}

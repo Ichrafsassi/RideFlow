@@ -72,6 +72,7 @@ RideFlow.map = RideFlow.map || {};
   // Register click handler for #request button
   $(function onDocReady() {
     $("#request").click(handleRequestClick);
+    $("#signOut").click(handleSignOut);
     $(RideFlow.map).on("pickupChange", handlePickupChanged);
 
     RideFlow.authToken.then(function updateAuthMessage(token) {
@@ -87,6 +88,13 @@ RideFlow.map = RideFlow.map || {};
       $("#noApiMessage").show();
     }
   });
+
+  function handleSignOut(event) {
+    event.preventDefault();
+    if (confirm('Are you sure you want to sign out?')) {
+      RideFlow.signOut();
+    }
+  }
 
   function handlePickupChanged() {
     var requestButton = $("#request");

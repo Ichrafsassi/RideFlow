@@ -21,36 +21,56 @@
     />
     <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css" />
     <link rel="stylesheet" href="/css/ride.css" />
-    <link rel="stylesheet" href="/css/rideflow-redesign.css" />
+    <link rel="stylesheet" href="/css/frontend.css" />
     <link rel="stylesheet" href="/css/message.css" />
   </head>
 
   <body>
-    <div class="info panel panel-default">
-      <div class="panel-heading">
-        <button id="request" class="btn btn-primary" disabled="disabled">
-          Set pickup
-        </button>
-        <div class="dropdown pull-right">
-          <button
-            id="accountLink"
-            class="btn"
-            type="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Account <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="accountLink">
-            <li><a id="signOut" href="#">Sign out</a></li>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="index.html">RideFlow</a>
+        <nav class="site-nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a class="active" href="ride.html">Ride Console</a></li>
+            <li><a href="faq.html">FAQ</a></li>
           </ul>
-        </div>
+        </nav>
+        <button type="button" class="btn-menu"><span></span></button>
       </div>
-      <div class="panel-body">
-        <ol id="updates">
-          <li>Welcome! Click the map to set your pickup location.</li>
-        </ol>
+    </header>
+
+    <div class="ride-layout">
+      <aside class="ride-sidebar">
+        <div class="ride-card">
+          <div class="ride-actions">
+            <button id="request" class="btn btn-primary" disabled="disabled">
+              Set pickup
+            </button>
+            <div class="dropdown pull-right">
+              <button
+                id="accountLink"
+                class="btn btn-ghost"
+                type="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Account <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="accountLink">
+                <li><a id="signOut" href="#">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+          <ol id="updates">
+            <li>Welcome! Click the map to set your pickup location.</li>
+          </ol>
+        </div>
+      </aside>
+
+      <div id="main">
+        <div id="map"></div>
       </div>
     </div>
 
@@ -89,10 +109,6 @@
           </p>
         </div>
       </div>
-    </div>
-
-    <div id="main">
-      <div id="map"></div>
     </div>
 
     <div

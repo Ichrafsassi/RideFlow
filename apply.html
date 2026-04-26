@@ -1,98 +1,62 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Apply - RideFlow</title>
-
-    <link rel="stylesheet" href="css/font.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/rideflow-redesign.css" />
-
+    <link rel="stylesheet" href="css/frontend.css" />
     <script src="js/vendor/modernizr.js"></script>
   </head>
-  <body class="page-apply">
+  <body class="page-hero">
     <header class="site-header">
-      <div class="site-logo">RideFlow</div>
-
-      <div class="row column medium-8 large-6 xlarge-5 xxlarge-4">
-        <h1 class="title">Apply Today!</h1>
-      </div>
-
-      <nav class="site-nav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="unicorns.html">Meet the Fleet</a></li>
-          <li><a href="investors.html">Investors & Board of Directors</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="apply.html">Apply</a></li>
-        </ul>
-      </nav>
-      <button type="button" class="btn-menu"><span>Menu</span></button>
-    </header>
-
-    <section class="content">
-      <div class="row column medium-10 large-7 xlarge-5">
-        <p>
-          RideFlow is hiring talented software engineers to help us build
-          modern, dependable transportation for every city. We are looking for a
-          technical team that can ship fast, scale safely, and improve rider
-          experiences every day.
-        </p>
-        <p>
-          From a technical standpoint, RideFlow believes in a future where there
-          are no servers to provision, manage, or scale! Interested candidates
-          can begin following the Serverless Way by exploring the following
-          options:
-        </p>
-        <ul>
-          <li>
-            Enter our
-            <a href="http://awschatbot.devpost.com" target="_blank"
-              >hackathon</a
-            >
-          </li>
-          <li>Train in the art of serverless</li>
-        </ul>
-
-        <h2>The Serverless Manifesto:</h2>
-        <p>Functions are the unit of deployment and scaling.</p>
-        <p>No machines, VMs, or containers visible in the programming model.</p>
-        <p>Permanent storage lives elsewhere.</p>
-        <p>
-          Scales per request. Users cannot over- or under-provision capacity.
-        </p>
-        <p>Never pay for idle (no cold servers/containers or their costs).</p>
-        <p>Implicitly fault tolerant because functions can run anywhere.</p>
-        <p>BYOC - Bring your own code.</p>
-        <p>Metrics and logging are a universal right.</p>
-      </div>
-    </section>
-
-    <footer class="site-footer">
-      <div class="row column">
-        <nav class="footer-nav">
+      <div class="container">
+        <a class="brand" href="index.html">RideFlow</a>
+        <nav class="site-nav">
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="unicorns.html">Meet the Fleet</a></li>
-            <li><a href="investors.html">Investors & Board of Directors</a></li>
+            <li><a href="unicorns.html">Fleet</a></li>
+            <li><a href="investors.html">Company</a></li>
             <li><a href="faq.html">FAQ</a></li>
-            <li><a href="apply.html">Apply</a></li>
+            <li><a class="active" href="apply.html">Careers</a></li>
           </ul>
         </nav>
+        <button type="button" class="btn-menu"><span></span></button>
       </div>
+    </header>
 
-      <div class="row column">
-        <div class="footer-legal">
-          &copy;RideFlow Inc<br />
-          All Rights Reserved
+    <main class="section">
+      <div class="container">
+        <h1 class="section-title">Join RideFlow</h1>
+        <p class="section-subtitle">Build modern mobility tools on AWS and ship products that impact real city movement.</p>
+        <div class="grid grid-2">
+          <article class="card">
+            <h3>What you will work on</h3>
+            <ul class="list">
+              <li>Real-time dispatch systems</li>
+              <li>Driver and rider trust & safety products</li>
+              <li>Cloud-native backend services and observability</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Engineering principles</h3>
+            <ul class="list">
+              <li>Serverless first architecture</li>
+              <li>Measure everything, optimize continuously</li>
+              <li>Fast release cycles with strong quality gates</li>
+            </ul>
+            <div class="cta-row" style="justify-content: flex-start">
+              <a class="btn btn-primary" href="http://awschatbot.devpost.com" target="_blank">Apply Now</a>
+            </div>
+          </article>
         </div>
       </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">©RideFlow Inc. All Rights Reserved</div>
     </footer>
 
     <script src="js/vendor.js"></script>
-
     <script src="js/main.js"></script>
   </body>
 </html>

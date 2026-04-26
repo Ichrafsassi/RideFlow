@@ -64,14 +64,19 @@ var RideFlow = window.RideFlow || {};
      * Cognito User Pool functions
      */
 
-    function register(email, password, onSuccess, onFailure) {
+    function register(name, email, password, onSuccess, onFailure) {
         var dataEmail = {
             Name: 'email',
             Value: email
         };
+        var dataName = {
+            Name: 'name',
+            Value: name
+        };
         var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+        var attributeName = new AmazonCognitoIdentity.CognitoUserAttribute(dataName);
 
-        userPool.signUp(toUsername(email), password, [attributeEmail], null,
+        userPool.signUp(toUsername(email), password, [attributeEmail, attributeName], null,
             function signUpCallback(err, result) {
                 if (!err) {
                     onSuccess(result);
@@ -186,6 +191,7 @@ var RideFlow = window.RideFlow || {};
     }
 
     function handleRegister(event) {
+        var name = $('#nameInputRegister').val();
         var email = $('#emailInputRegister').val();
         var password = $('#passwordInputRegister').val();
         var password2 = $('#password2InputRegister').val();
@@ -209,7 +215,7 @@ var RideFlow = window.RideFlow || {};
         event.preventDefault();
 
         // Validation
-        if (!email || !password || !password2) {
+        if (!name || !email || !password || !password2) {
             alert('Please fill in all fields');
             return;
         }
@@ -224,7 +230,7 @@ var RideFlow = window.RideFlow || {};
             return;
         }
 
-        register(email, password, onSuccess, onFailure);
+        register(name, email, password, onSuccess, onFailure);
     }
 
     function handleVerify(event) {

@@ -48,21 +48,30 @@ RideFlow.map = RideFlow.map || {};
   }
 
   function completeRequest(result) {
-    var driver;
+    var vehicle;
     var pronoun;
     console.log("Response received from API: ", result);
-    driver = result.Unicorn;
-    pronoun = driver.Gender === "Male" ? "his" : "her";
+    
+    // Support both 'Unicorn' (legacy) and 'Vehicle' (new) keys
+    vehicle = result.Vehicle || result.Unicorn;
+    
+    if (!vehicle) {
+        console.error("No vehicle data found in API response");
+        displayUpdate("Error: No driver assigned. Please try again.");
+        return;
+    }
+
+    pronoun = vehicle.Gender === "Male" ? "his" : "her";
     displayUpdate(
-      driver.Name +
+      vehicle.Name +
         ", your " +
-        driver.Color +
+        vehicle.Color +
         " RideFlow driver, is on " +
         pronoun +
         " way.",
     );
     animateArrival(function animateCallback() {
-      displayUpdate(driver.Name + " has arrived. Your ride is ready.");
+      displayUpdate(vehicle.Name + " has arrived. Your ride is ready.");
       RideFlow.map.unsetLocation();
       $("#request").prop("disabled", "disabled");
       $("#request").text("Set Pickup");
@@ -105,6 +114,13 @@ RideFlow.map = RideFlow.map || {};
   function handleRequestClick(event) {
     var pickupLocation = RideFlow.map.selectedPoint;
     event.preventDefault();
+    
+    if (!pickupLocation) {
+        alert("Please click the map to set your pickup location first!");
+        return;
+    }
+    
+    $("#request").text("Requesting...").prop("disabled", true);
     requestRide(pickupLocation);
   }
 

@@ -75,7 +75,7 @@ function assignDriver(pickupLocation) {
 // Store ride in DynamoDB
 async function recordRide(rideId, username, driver, pickupLocation) {
     const params = {
-        TableName: 'Rides', // make sure matches your DB
+        TableName: 'Rideflow', // make sure matches your DB
         Item: {
             RideId: rideId,
             User: username,

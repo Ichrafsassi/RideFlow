@@ -3,6 +3,7 @@ html, body, #main, #map {
     margin: 0;
     height: 100%;
     width: 100%;
+    background: #070b14;
 }
 
 .info {
@@ -25,9 +26,15 @@ html, body, #main, #map {
     border: none;
     border-radius: 999px;
     text-align: center;
-    padding: 0.62rem 1.2rem;
-    font-weight: 700;
+    padding: 0.7rem 1.4rem;
+    font-weight: 800;
     box-shadow: 0 10px 25px rgba(255, 176, 32, 0.35);
+    transition: transform 0.2s ease;
+}
+
+#request:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(255, 176, 32, 0.45);
 }
 
 #request:disabled {
@@ -41,27 +48,61 @@ html, body, #main, #map {
     border: 1px solid rgba(181, 206, 255, 0.22);
     color: #eaf1ff;
     border-radius: 999px;
+    padding: 0.7rem 1.4rem;
+    font-weight: 700;
+}
+
+.dropdown-menu {
+    background: #111a2c;
+    border: 1px solid rgba(181, 206, 255, 0.22);
+    border-radius: 12px;
+    margin-top: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.dropdown-menu > li > a {
+    color: #eaf1ff;
+    padding: 10px 20px;
+}
+
+.dropdown-menu > li > a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffb020;
 }
 
 #updates {
     list-style: none;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     padding: 0;
     display: grid;
-    gap: 0.6rem;
+    gap: 0.8rem;
 }
 
 #updates li {
     margin: 0;
     border: 1px solid rgba(181, 206, 255, 0.15);
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.03);
     color: #d8e8ff;
-    padding: 0.75rem;
-    font-size: 0.9rem;
+    padding: 0.9rem;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    animation: fade-in 0.3s ease both;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .authToken {
     word-wrap: break-word;
     width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #45d0ff;
+    padding: 10px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 0.8rem;
 }

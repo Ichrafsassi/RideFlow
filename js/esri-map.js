@@ -24,30 +24,33 @@ RideFlow.map = RideFlow.map || {};
   ) {
     var wrMap = RideFlow.map;
 
-    var map = new Map({ basemap: "gray-vector" });
+    var map = new Map({ basemap: "dark-gray" });
 
     var view = new MapView({
       center: [-122.31, 47.6],
       container: "map",
       map: map,
       zoom: 12,
+      ui: {
+        components: ["attribution"] // Simplify UI for cleaner look
+      }
     });
 
     var pinSymbol = new TextSymbol({
-      color: "#f50856",
+      color: "#ffb020",
       text: "\ue61d",
       font: {
-        size: 20,
+        size: 26,
         family: "CalciteWebCoreIcons",
       },
     });
 
     var rideSymbol = new SimpleMarkerSymbol({
       style: "circle",
-      color: "#ff9900",
+      color: "#45d0ff",
       size: 14,
       outline: {
-        color: "#131f35",
+        color: "#070b14",
         width: 2,
       },
     });

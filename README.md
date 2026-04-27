@@ -24,10 +24,11 @@ import { DynamoDBDocumentClient, PutCommand } from '@aws-sdk/lib-dynamodb';
 const client = new DynamoDBClient({});
 const ddb = DynamoDBDocumentClient.from(client);
 
-const fleet = [
-    { Name: 'Angel', Color: 'White', Gender: 'Female' },
-    { Name: 'Gil', Color: 'White', Gender: 'Male' },
-    { Name: 'Rocinante', Color: 'Yellow', Gender: 'Female' },
+// Simulated drivers fleet
+const drivers = [
+    { Name: 'Adam', Vehicle: 'Sedan', Status: 'Available' },
+    { Name: 'Sara', Vehicle: 'SUV', Status: 'Available' },
+    { Name: 'Youssef', Vehicle: 'Hatchback', Status: 'Available' },
 ];
 
 export const handler = async (event, context) => {
@@ -36,23 +37,24 @@ export const handler = async (event, context) => {
     }
 
     const rideId = toUrlString(randomBytes(16));
-    console.log('Received event (', rideId, '): ', event);
+    console.log('RideFlow Request (', rideId, '): ', event);
 
     const username = event.requestContext.authorizer.claims['cognito:username'];
     const requestBody = JSON.parse(event.body);
     const pickupLocation = requestBody.PickupLocation;
 
-    const unicorn = findUnicorn(pickupLocation);
+    const driver = assignDriver(pickupLocation);
 
     try {
-        await recordRide(rideId, username, unicorn);
+        await recordRide(rideId, username, driver, pickupLocation);
+
         return {
             statusCode: 201,
             body: JSON.stringify({
                 RideId: rideId,
-                Unicorn: unicorn,
-                Eta: '30 seconds',
-                Rider: username,
+                Driver: driver,
+                ETA: '5 minutes',
+                User: username,
             }),
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -64,24 +66,30 @@ export const handler = async (event, context) => {
     }
 };
 
-function findUnicorn(pickupLocation) {
-    console.log('Finding unicorn for ', pickupLocation.Latitude, ', ', pickupLocation.Longitude);
-    return fleet[Math.floor(Math.random() * fleet.length)];
+// Assign random driver
+function assignDriver(pickupLocation) {
+    console.log('Assigning driver for location:', pickupLocation);
+    return drivers[Math.floor(Math.random() * drivers.length)];
 }
 
-async function recordRide(rideId, username, unicorn) {
+// Store ride in DynamoDB
+async function recordRide(rideId, username, driver, pickupLocation) {
     const params = {
-        TableName: 'Rides',
+        TableName: 'Rides', // make sure matches your DB
         Item: {
             RideId: rideId,
             User: username,
-            Unicorn: unicorn,
+            Driver: driver,
+            PickupLocation: pickupLocation,
             RequestTime: new Date().toISOString(),
+            Status: 'REQUESTED',
         },
     };
+
     await ddb.send(new PutCommand(params));
 }
 
+// Utility
 function toUrlString(buffer) {
     return buffer.toString('base64')
         .replace(/\+/g, '-')
@@ -89,6 +97,7 @@ function toUrlString(buffer) {
         .replace(/=/g, '');
 }
 
+// Error handler
 function errorResponse(errorMessage, awsRequestId) {
     return {
         statusCode: 500,
